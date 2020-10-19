@@ -10,5 +10,5 @@ app.post('/signup', signup)
 app.post('/login', login)
 
 app.listen(3000, () => {
-  console.log('Running on 3000')
+  console.log('Running on port 3000')
 })

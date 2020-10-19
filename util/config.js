@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   apiKey: process.env.FB_APIKEY,
   authDomain: process.env.FB_AUTH_DOMAIN,
