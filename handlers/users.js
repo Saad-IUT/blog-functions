@@ -1,9 +1,8 @@
 const firebase = require('firebase')
 
 const { db } = require('../util/admin')
-const config = require('../util/config')
 
-firebase.initializeApp(config)
+firebase.initializeApp()
 
 const {
   validateSignupData,
@@ -50,7 +49,7 @@ exports.signup = (req, res) => {
         email: newUser.email,
         createdAt: new Date().toISOString(),
         //TODO Append token to imageUrl. Work around just add token from image in storage.
-        imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
+        imageUrl: `https://firebasestorage.googleapis.com/v0/b/test/o/${noImg}?alt=media`,
         userId,
       }
       return db.doc(`/users/${newUser.handle}`).set(userCredentials)
