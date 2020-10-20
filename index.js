@@ -1,5 +1,6 @@
 const app = require('express')()
 const jsonParser = require('body-parser').json()
+require('dotenv').config()
 
 const { signup, login } = require('./handlers/users')
 
