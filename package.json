@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^7.24.0",
-    "firebase-admin": "^9.2.0",
-    "nodemon": "^2.0.6"
+    "firebase-admin": "^9.2.0"
+  },
+  "engines": {
+    "node":"12.18.4"
   }
 }

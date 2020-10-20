@@ -5,10 +5,15 @@ const { signup, login } = require('./handlers/users')
 
 app.use(jsonParser)
 
+let port = process.env.PORT || 3000
+app.get('/', (req, res) => {
+  res.send('Helo World')
+})
+
 // Users routes
 app.post('/signup', signup)
 app.post('/login', login)
 
-app.listen(3000, () => {
-  console.log('Running on port 3000')
+app.listen(port, () => {
+  console.log(`Running on port ${port}`)
 })
