@@ -12,7 +12,7 @@ const {
 } = require('../util/validators')
 
 // Sign users up
-exports.signup = (req, res) => {
+exports.signup = async (req, res) => {
   const newUser = {
     email: req.body.email,
     password: req.body.password,
@@ -28,7 +28,7 @@ exports.signup = (req, res) => {
   const noImg = 'no-img.png'
 
   let token, userId
-  db.doc(`/users/${newUser.handle}`)
+  await db.doc(`/users/${newUser.handle}`)
     .get()
     .then(doc => {
       if (doc.exists) {
@@ -40,6 +40,7 @@ exports.signup = (req, res) => {
       }
     })
     .then(data => {
+      console.log(data)
       userId = data.user.uid
       return data.user.getIdToken()
     })
