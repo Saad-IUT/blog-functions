@@ -3,7 +3,7 @@ const firebase = require('firebase')
 const { db } = require('../util/admin')
 const config = require('../util/config')
 
-// firebase.initializeApp(config)
+firebase.initializeApp(config)
 
 const {
   validateSignupData,
@@ -20,7 +20,7 @@ exports.signup = (req, res) => {
     handle: req.body.handle,
     studentId: req.body.studentId,
   }
-
+  console.log(newUser)
   const { valid, errors } = validateSignupData(newUser)
 
   if (!valid) return res.status(400).json(errors)
