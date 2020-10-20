@@ -7,7 +7,7 @@ app.use(jsonParser)
 
 let port = process.env.PORT || 3000
 app.get('/', (req, res) => {
-  res.send('Testing')
+  res.send('OK')
 })
 
 // Users routes
