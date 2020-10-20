@@ -1,8 +1,8 @@
 const firebase = require('firebase')
-
+const config = require('../util/config')
 const { db } = require('../util/admin')
 
-firebase.initializeApp()
+firebase.initializeApp(config)
 
 const {
   validateSignupData,
