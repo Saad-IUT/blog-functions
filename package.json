@@ -4,7 +4,7 @@
   "description": "Backend for blogApp project",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +15,5 @@
     "express": "^4.17.1",
     "firebase": "^7.24.0",
     "firebase-admin": "^9.2.0"
-  },
-  "engines": {
-    "node":"12.18.4"
   }
 }
