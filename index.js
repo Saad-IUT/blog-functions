@@ -2,6 +2,8 @@ const app = require('express')()
 const jsonParser = require('body-parser').json()
 
 const { signup, login } = require('./handlers/users')
+const { postBlog } = require('./handlers/blogs')
+const FBAuth = require('./util/fbAuth')
 
 app.use(jsonParser)
 
@@ -13,6 +15,9 @@ app.get('/', (req, res) => {
 // Users routes
 app.post('/signup', signup)
 app.post('/login', login)
+
+// Blogs routes
+app.post('/blog', FBAuth, postBlog)
 
 app.listen(port, () => {
   console.log(`Running on port ${port}`)
