@@ -3,7 +3,7 @@ const firebase = require('firebase')
 const { db } = require('../util/admin')
 const config = require('../util/config')
 
-firebase.initializeApp(config)
+// firebase.initializeApp(config)
 
 const {
   validateSignupData,
@@ -12,7 +12,7 @@ const {
 } = require('../util/validators')
 
 // Sign users up
-exports.signup = async (req, res) => {
+exports.signup = (req, res) => {
   const newUser = {
     email: req.body.email,
     password: req.body.password,
@@ -28,7 +28,7 @@ exports.signup = async (req, res) => {
   const noImg = 'no-img.png'
 
   let token, userId
-  await db.doc(`/users/${newUser.handle}`)
+  db.doc(`/users/${newUser.handle}`)
     .get()
     .then(doc => {
       if (doc.exists) {
@@ -52,7 +52,7 @@ exports.signup = async (req, res) => {
         email: newUser.email,
         createdAt: new Date().toISOString(),
         //TODO Append token to imageUrl. Work around just add token from image in storage.
-        imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
+        // imageUrl: `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${noImg}?alt=media`,
         userId,
       }
       return db.doc(`/users/${newUser.handle}`).set(userCredentials)
