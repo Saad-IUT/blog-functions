@@ -1,5 +1,6 @@
 const app = require('express')()
 const jsonParser = require('body-parser').json()
+const cors = require('cors')
 
 const { signup, login } = require('./handlers/users')
 const {
@@ -12,7 +13,7 @@ const {
   commentOnBlog,
 } = require('./handlers/blogs')
 const FBAuth = require('./util/fbAuth')
-
+app.use(cors())
 app.use(jsonParser)
 
 let port = process.env.PORT || 3000
