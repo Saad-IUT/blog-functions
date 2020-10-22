@@ -108,7 +108,7 @@ exports.getUserDetails = (req, res) => {
       if (doc.exists) {
         userData = doc.data()
       } else {
-        return res.status(404).json({ errror: 'User not found' })
+        return res.status(404).json({ error: 'User not found' })
       }
     })
     .then(() => {
