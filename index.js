@@ -8,6 +8,7 @@ const {
   login,
   getUserDetails,
   uploadImage,
+  addUserDetails,
 } = require('./handlers/users')
 const {
   addBlog,
@@ -30,8 +31,8 @@ app.get('/', (req, res) => {
 // Users routes
 app.post('/signup', signup)
 app.post('/login', login)
-app.post('/user/image', FBAuth, uploadImage)
-// app.post('/user', FBAuth, addUserDetails)
+// app.post('/user/image', FBAuth, uploadImage)
+app.post('/user', FBAuth, addUserDetails)
 app.get('/user/:handle', getUserDetails)
 // app.post('/notifications', FBAuth, markNotificationsRead)
 
