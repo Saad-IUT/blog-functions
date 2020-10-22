@@ -1,8 +1,9 @@
 const app = require('express')()
 const jsonParser = require('body-parser').json()
-const cors = require('cors')
+const cors = require('cors')()
 
-const { signup, login } = require('./handlers/users')
+const FBAuth = require('./util/fbAuth')
+const { signup, login, getUserDetails } = require('./handlers/users')
 const {
   addBlog,
   getAllBlogs,
@@ -12,9 +13,9 @@ const {
   unlikeBlog,
   commentOnBlog,
 } = require('./handlers/blogs')
-const FBAuth = require('./util/fbAuth')
-app.use(cors())
-app.use(jsonParser)
+
+app.use(cors, jsonParser)
+// app.use(jsonParser)
 
 let port = process.env.PORT || 3000
 app.get('/', (req, res) => {
@@ -24,6 +25,11 @@ app.get('/', (req, res) => {
 // Users routes
 app.post('/signup', signup)
 app.post('/login', login)
+// app.post('/user/image', FBAuth, uploadImage)
+// app.post('/user', FBAuth, addUserDetails)
+// app.get('/user', FBAuth, getAuthenticatedUser)
+app.get('/user/:handle', getUserDetails)
+// app.post('/notifications', FBAuth, markNotificationsRead)
 
 // Blogs routes
 app.get('/blogs', getAllBlogs)
