@@ -131,8 +131,6 @@ exports.uploadImage = (req, res) => {
 
   let imageToBeUploaded = {}
   let imageFileName
-  // String for image token
-  let generatedToken = uuid()
 
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
     if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
@@ -157,14 +155,12 @@ exports.uploadImage = (req, res) => {
         metadata: {
           metadata: {
             contentType: imageToBeUploaded.mimetype,
-            //Generate token to be appended to imageUrl
-            firebaseStorageDownloadTokens: generatedToken,
           },
         },
       })
       .then(() => {
         // Append token to url
-        const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media&token=${generatedToken}`
+        const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media`
         return db.doc(`/users/${req.user.handle}`).update({ imageUrl })
       })
       .then(() => {
