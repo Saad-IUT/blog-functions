@@ -4,8 +4,8 @@
   "description": "Backend for blogApp project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "git": "git add . && git commit -m \"Done\" && git push"
+    "start": "node index",
+    "deploy": "git add . && git commit -m \"Done\" && git push && git push heroku"
   },
   "keywords": [],
   "author": "",
