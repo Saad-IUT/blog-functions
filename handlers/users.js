@@ -12,12 +12,13 @@ const {
 
 // Sign users up
 exports.signup = (req, res) => {
+  let user = req.body
   const newUser = {
-    email: req.body.email,
-    password: req.body.password,
-    confirmPassword: req.body.confirmPassword,
-    handle: req.body.handle,
-    studentId: req.body.studentId,
+    email: user.email,
+    password: user.password,
+    confirmPassword: user.confirmPassword,
+    handle: user.handle,
+    studentId: user.studentId,
   }
   const { valid, errors } = validateSignupData(newUser)
 
@@ -55,7 +56,7 @@ exports.signup = (req, res) => {
       return db.doc(`/users/${newUser.handle}`).set(userCredentials)
     })
     .then(() => {
-      return res.status(201).json({ token })
+      return res.status(201).json({ token, userId })
     })
     .catch(err => {
       console.error(err)

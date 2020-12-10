@@ -22,7 +22,6 @@ const {
 } = require('./handlers/blogs')
 
 app.use(cors, jsonParser)
-// app.use(jsonParser)
 
 let port = process.env.PORT || 3000
 app.get('/', (req, res) => {
